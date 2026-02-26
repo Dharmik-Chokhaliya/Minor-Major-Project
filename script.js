@@ -182,12 +182,15 @@ const PRICE_DATA = {
   "_luxury_brands":["BMW","Mercedes-Benz","Audi","Lexus","Porsche","Volvo","Jaguar","Land Rover","Maserati","Bentley","Rolls-Royce","Ferrari","Lamborghini","McLaren","Aston Martin","Genesis","Infiniti","Acura","Lincoln","Cadillac","Alfa Romeo","Lotus","Bugatti","Pagani","Tesla"]
 };
 
-async function fetchJSON(url, timeoutMs = 12000) {
+const CORS_PROXY = 'https://corsproxy.io/?';
+
+async function fetchJSON(url, timeoutMs = 15000) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
   try {
-    const response = await fetch(url, {
+    const proxiedUrl = CORS_PROXY + encodeURIComponent(url);
+    const response = await fetch(proxiedUrl, {
       signal: controller.signal,
       headers: { 'Accept': 'application/json' }
     });

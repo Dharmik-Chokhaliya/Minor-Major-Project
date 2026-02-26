@@ -543,7 +543,7 @@ function displayCarResults(vehicle) {
     trimsHTML = vehicle.trims.map((trim, i) => {
       const USD_TO_INR = 85;
       const fmtUSD = (v) => v ? '$' + Number(v).toLocaleString('en-US') : null;
-      const fmtINR = (v) => v ? '₹' + Math.round(Number(v) * USD_TO_INR).toLocaleString('en-IN') : null;
+      const fmtINR = (v) => v ? '₹' + Math.round(Number(v) * USD_TO_INR).toLocaleString('en-IN', { maximumFractionDigits: 0 }) : null;
 
       const hasPrice = trim.estimated_price && trim.msrp;
       let priceSectionHTML = '';

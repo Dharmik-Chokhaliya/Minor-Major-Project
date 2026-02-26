@@ -460,8 +460,9 @@ async function searchCar() {
         else if (desc.includes('van')) category = 'van';
 
         const hasRealMsrp = trim.msrp && trim.msrp > 0;
+        const trimYear = trim.year || yearNum || new Date().getFullYear();
         const pricing = hasRealMsrp
-          ? estimatePrice(make, model, yearNum || new Date().getFullYear(), trim.msrp, category)
+          ? estimatePrice(make, model, trimYear, trim.msrp, category)
           : null;
 
         return {

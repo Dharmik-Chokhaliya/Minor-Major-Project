@@ -562,7 +562,6 @@ function displayCarResults(vehicle) {
             <div class="estimated-price-inr">${fmtINR(trim.estimated_price)}</div>
             <div class="price-details">
               <span class="msrp-label">MSRP: ${fmtUSD(trim.msrp)} / ${fmtINR(trim.msrp)}</span>
-              <span class="depreciation-badge">↓ ${trim.depreciation_pct || 0}% depreciation</span>
             </div>
             <span class="results-badge ${methodClass}">${methodLabel}</span>
           </div>`;

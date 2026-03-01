@@ -178,8 +178,47 @@ const PRICE_DATA = {
   "Dodge":{"Charger":{"base_msrp":33690,"category":"sedan"},"Challenger":{"base_msrp":33595,"category":"sports"},"Durango":{"base_msrp":40995,"category":"suv"},"Hornet":{"base_msrp":33540,"category":"suv"}},
   "Lexus":{"RX":{"base_msrp":50600,"category":"suv"},"ES":{"base_msrp":42490,"category":"sedan"},"NX":{"base_msrp":42125,"category":"suv"},"IS":{"base_msrp":41450,"category":"sedan"},"GX":{"base_msrp":65415,"category":"suv"},"LC":{"base_msrp":99600,"category":"sports"},"LS":{"base_msrp":80600,"category":"sedan"},"RC":{"base_msrp":45750,"category":"sports"}},
   "Volvo":{"XC90":{"base_msrp":58645,"category":"suv"},"XC60":{"base_msrp":45550,"category":"suv"},"XC40":{"base_msrp":39700,"category":"suv"},"S60":{"base_msrp":42550,"category":"sedan"},"S90":{"base_msrp":56695,"category":"sedan"}},
+  "Ferrari":{"812 GTS":{"base_msrp":363730,"category":"sports"},"812 Superfast":{"base_msrp":340000,"category":"sports"},"SF90 Stradale":{"base_msrp":524815,"category":"sports"},"F8 Tributo":{"base_msrp":280000,"category":"sports"},"Roma":{"base_msrp":222620,"category":"sports"},"296 GTB":{"base_msrp":352000,"category":"sports"},"Portofino M":{"base_msrp":245000,"category":"sports"},"488 GTB":{"base_msrp":262647,"category":"sports"},"LaFerrari":{"base_msrp":1416362,"category":"sports"}},
+  "Lamborghini":{"Huracán":{"base_msrp":208571,"category":"sports"},"Aventador":{"base_msrp":417826,"category":"sports"},"Urus":{"base_msrp":225000,"category":"suv"},"Revuelto":{"base_msrp":608358,"category":"sports"}},
+  "Bugatti":{"Chiron":{"base_msrp":3000000,"category":"sports"},"Divo":{"base_msrp":5800000,"category":"sports"},"Veyron":{"base_msrp":1700000,"category":"sports"},"Centodieci":{"base_msrp":9000000,"category":"sports"},"Bolide":{"base_msrp":4700000,"category":"sports"},"Mistral":{"base_msrp":5000000,"category":"sports"}},
+  "McLaren":{"720S":{"base_msrp":299000,"category":"sports"},"765LT":{"base_msrp":382500,"category":"sports"},"Artura":{"base_msrp":237500,"category":"sports"},"GT":{"base_msrp":210000,"category":"sports"}},
   "_defaults":{"sedan":{"base_msrp":30000},"suv":{"base_msrp":38000},"truck":{"base_msrp":35000},"sports":{"base_msrp":50000},"van":{"base_msrp":35000},"luxury_sedan":{"base_msrp":55000},"luxury_suv":{"base_msrp":70000},"unknown":{"base_msrp":32000}},
   "_luxury_brands":["BMW","Mercedes-Benz","Audi","Lexus","Porsche","Volvo","Jaguar","Land Rover","Maserati","Bentley","Rolls-Royce","Ferrari","Lamborghini","McLaren","Aston Martin","Genesis","Infiniti","Acura","Lincoln","Cadillac","Alfa Romeo","Lotus","Bugatti","Pagani","Tesla"]
+};
+
+// Hardcoded specs for exotic/hypercar models where the API returns N/A
+const KNOWN_SPECS = {
+  "Ferrari": {
+    "812 GTS":       { engine: "6.5L V12", horsepower: "789 HP", torque: "530 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed Dual-Clutch", drive_type: "RWD", cylinders: "12" },
+    "812 Superfast":  { engine: "6.5L V12", horsepower: "789 HP", torque: "530 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed Dual-Clutch", drive_type: "RWD", cylinders: "12" },
+    "SF90 Stradale": { engine: "4.0L Twin-Turbo V8 Hybrid", horsepower: "986 HP", torque: "590 lb-ft", fuel_type: "Hybrid", transmission: "8-Speed Dual-Clutch", drive_type: "AWD", cylinders: "8" },
+    "F8 Tributo":    { engine: "3.9L Twin-Turbo V8", horsepower: "710 HP", torque: "568 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed Dual-Clutch", drive_type: "RWD", cylinders: "8" },
+    "Roma":          { engine: "3.9L Twin-Turbo V8", horsepower: "612 HP", torque: "561 lb-ft", fuel_type: "Gasoline", transmission: "8-Speed Dual-Clutch", drive_type: "RWD", cylinders: "8" },
+    "296 GTB":       { engine: "3.0L Twin-Turbo V6 Hybrid", horsepower: "819 HP", torque: "546 lb-ft", fuel_type: "Hybrid", transmission: "8-Speed Dual-Clutch", drive_type: "RWD", cylinders: "6" },
+    "Portofino M":   { engine: "3.9L Twin-Turbo V8", horsepower: "612 HP", torque: "561 lb-ft", fuel_type: "Gasoline", transmission: "8-Speed Dual-Clutch", drive_type: "RWD", cylinders: "8" },
+    "488 GTB":       { engine: "3.9L Twin-Turbo V8", horsepower: "661 HP", torque: "561 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed Dual-Clutch", drive_type: "RWD", cylinders: "8" },
+    "LaFerrari":     { engine: "6.3L V12 Hybrid", horsepower: "950 HP", torque: "664 lb-ft", fuel_type: "Hybrid", transmission: "7-Speed Dual-Clutch", drive_type: "RWD", cylinders: "12" }
+  },
+  "Bugatti": {
+    "Chiron":        { engine: "8.0L Quad-Turbo W16", horsepower: "1,479 HP", torque: "1,180 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed Dual-Clutch", drive_type: "AWD", cylinders: "16" },
+    "Divo":          { engine: "8.0L Quad-Turbo W16", horsepower: "1,500 HP", torque: "1,180 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed Dual-Clutch", drive_type: "AWD", cylinders: "16" },
+    "Veyron":        { engine: "8.0L Quad-Turbo W16", horsepower: "1,001 HP", torque: "922 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed Dual-Clutch", drive_type: "AWD", cylinders: "16" },
+    "Centodieci":    { engine: "8.0L Quad-Turbo W16", horsepower: "1,577 HP", torque: "1,180 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed Dual-Clutch", drive_type: "AWD", cylinders: "16" },
+    "Bolide":        { engine: "8.0L Quad-Turbo W16", horsepower: "1,824 HP", torque: "1,364 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed Dual-Clutch", drive_type: "AWD", cylinders: "16" },
+    "Mistral":       { engine: "8.0L Quad-Turbo W16", horsepower: "1,577 HP", torque: "1,180 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed Dual-Clutch", drive_type: "AWD", cylinders: "16" }
+  },
+  "Lamborghini": {
+    "Huracán":       { engine: "5.2L V10", horsepower: "631 HP", torque: "417 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed Dual-Clutch", drive_type: "AWD", cylinders: "10" },
+    "Aventador":     { engine: "6.5L V12", horsepower: "769 HP", torque: "531 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed ISR", drive_type: "AWD", cylinders: "12" },
+    "Urus":          { engine: "4.0L Twin-Turbo V8", horsepower: "657 HP", torque: "627 lb-ft", fuel_type: "Gasoline", transmission: "8-Speed Automatic", drive_type: "AWD", cylinders: "8" },
+    "Revuelto":      { engine: "6.5L V12 Hybrid", horsepower: "1,001 HP", torque: "535 lb-ft", fuel_type: "Hybrid", transmission: "8-Speed Dual-Clutch", drive_type: "AWD", cylinders: "12" }
+  },
+  "McLaren": {
+    "720S":          { engine: "4.0L Twin-Turbo V8", horsepower: "710 HP", torque: "568 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed Dual-Clutch", drive_type: "RWD", cylinders: "8" },
+    "765LT":         { engine: "4.0L Twin-Turbo V8", horsepower: "755 HP", torque: "590 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed Dual-Clutch", drive_type: "RWD", cylinders: "8" },
+    "Artura":        { engine: "3.0L Twin-Turbo V6 Hybrid", horsepower: "671 HP", torque: "531 lb-ft", fuel_type: "Hybrid", transmission: "8-Speed Dual-Clutch", drive_type: "RWD", cylinders: "6" },
+    "GT":            { engine: "4.0L Twin-Turbo V8", horsepower: "612 HP", torque: "465 lb-ft", fuel_type: "Gasoline", transmission: "7-Speed Dual-Clutch", drive_type: "RWD", cylinders: "8" }
+  }
 };
 
 const CORS_PROXY = 'https://corsproxy.io/?';
@@ -421,6 +460,42 @@ async function searchCar() {
     const hasEngines = enginesData && enginesData.data && enginesData.data.length > 0;
 
     if (!hasTrims && !hasEngines) {
+      // Fallback: check if we have hardcoded specs for this exotic car
+      const fallbackSpec = (KNOWN_SPECS[make] && KNOWN_SPECS[make][model]) || null;
+      const fallbackPrice = (PRICE_DATA[make] && PRICE_DATA[make][model]) || null;
+
+      if (fallbackSpec || fallbackPrice) {
+        const trimYear = yearNum || new Date().getFullYear();
+        const pricing = estimatePrice(make, model, trimYear, null, 'sports');
+
+        const syntheticTrim = {
+          trim_name: 'Base',
+          submodel: fallbackSpec ? null : null,
+          description: 'N/A',
+          engine: fallbackSpec ? fallbackSpec.engine : 'N/A',
+          fuel_type: fallbackSpec ? fallbackSpec.fuel_type : 'N/A',
+          horsepower: fallbackSpec ? fallbackSpec.horsepower : 'N/A',
+          torque: fallbackSpec ? fallbackSpec.torque : 'N/A',
+          transmission: fallbackSpec ? fallbackSpec.transmission : 'N/A',
+          drive_type: fallbackSpec ? fallbackSpec.drive_type : 'N/A',
+          cylinders: fallbackSpec ? fallbackSpec.cylinders : 'N/A',
+          msrp: pricing ? pricing.msrp : null,
+          estimated_price: pricing ? pricing.estimated_price : null,
+          depreciation_pct: pricing ? pricing.depreciation_pct : null,
+          price_method: pricing ? pricing.method : null
+        };
+
+        displayCarResults({
+          year: yearNum || 'All Years',
+          make: make,
+          model: model,
+          total_trims: 1,
+          trims: [syntheticTrim],
+          source: 'AutoMart Database'
+        });
+        return;
+      }
+
       showSearchError(
         `No Results for ${yearNum ? yearNum + ' ' : ''}${make} ${model}`,
         'No data found for this vehicle.',
@@ -447,6 +522,9 @@ async function searchCar() {
 
     let trims = [];
 
+    // Get fallback specs for exotic cars from KNOWN_SPECS
+    const knownSpec = (KNOWN_SPECS[make] && KNOWN_SPECS[make][model]) || null;
+
     if (hasTrims) {
       trims = trimsData.data.map(trim => {
         const engine = engineMap[trim.id] || {};
@@ -459,25 +537,31 @@ async function searchCar() {
         else if (desc.includes('coupe') || desc.includes('convertible')) category = 'sports';
         else if (desc.includes('van')) category = 'van';
 
+        // For exotic cars, use KNOWN_SPECS as category fallback
+        if (!category && knownSpec) category = 'sports';
+
         const hasRealMsrp = trim.msrp && trim.msrp > 0;
         const trimYear = trim.year || yearNum || new Date().getFullYear();
         const pricing = hasRealMsrp
           ? estimatePrice(make, model, trimYear, trim.msrp, category)
-          : null;
+          : estimatePrice(make, model, trimYear, null, category);
+
+        // Build engine display — prefer API data, fallback to KNOWN_SPECS
+        const rawEngine = engine.displacement && engine.displacement !== 'N/A'
+          ? `${engine.displacement} ${engine.cylinders || ''} ${engine.engine_type || ''}`.trim()
+          : (engine.engine_type && engine.engine_type !== 'N/A' ? engine.engine_type : null);
 
         return {
           trim_name: trim.trim || 'Base',
           submodel: trim.submodel || null,
           description: trim.description || 'N/A',
-          engine: engine.displacement && engine.displacement !== 'N/A'
-            ? `${engine.displacement} ${engine.cylinders || ''} ${engine.engine_type || ''}`.trim()
-            : (engine.engine_type || 'N/A'),
-          fuel_type: engine.fuel_type || 'N/A',
-          horsepower: engine.horsepower ? `${engine.horsepower} HP` : 'N/A',
-          torque: engine.torque ? `${engine.torque} lb-ft` : 'N/A',
-          transmission: engine.transmission || 'N/A',
-          drive_type: engine.drive_type || 'N/A',
-          cylinders: engine.cylinders || 'N/A',
+          engine: rawEngine || (knownSpec ? knownSpec.engine : 'N/A'),
+          fuel_type: (engine.fuel_type && engine.fuel_type !== 'N/A') ? engine.fuel_type : (knownSpec ? knownSpec.fuel_type : 'N/A'),
+          horsepower: engine.horsepower ? `${engine.horsepower} HP` : (knownSpec ? knownSpec.horsepower : 'N/A'),
+          torque: engine.torque ? `${engine.torque} lb-ft` : (knownSpec ? knownSpec.torque : 'N/A'),
+          transmission: (engine.transmission && engine.transmission !== 'N/A') ? engine.transmission : (knownSpec ? knownSpec.transmission : 'N/A'),
+          drive_type: (engine.drive_type && engine.drive_type !== 'N/A') ? engine.drive_type : (knownSpec ? knownSpec.drive_type : 'N/A'),
+          cylinders: (engine.cylinders && engine.cylinders !== 'N/A') ? engine.cylinders : (knownSpec ? knownSpec.cylinders : 'N/A'),
           msrp: pricing ? pricing.msrp : null,
           estimated_price: pricing ? pricing.estimated_price : null,
           depreciation_pct: pricing ? pricing.depreciation_pct : null,

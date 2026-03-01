@@ -214,6 +214,41 @@
     "S90":       { "base_msrp": 56695, "category": "sedan" }
   },
 
+  "Ferrari": {
+    "812 GTS":       { "base_msrp": 363730, "category": "sports" },
+    "812 Superfast":  { "base_msrp": 340000, "category": "sports" },
+    "SF90 Stradale": { "base_msrp": 524815, "category": "sports" },
+    "F8 Tributo":    { "base_msrp": 280000, "category": "sports" },
+    "Roma":          { "base_msrp": 222620, "category": "sports" },
+    "296 GTB":       { "base_msrp": 352000, "category": "sports" },
+    "Portofino M":   { "base_msrp": 245000, "category": "sports" },
+    "488 GTB":       { "base_msrp": 262647, "category": "sports" },
+    "LaFerrari":     { "base_msrp": 1416362, "category": "sports" }
+  },
+
+  "Lamborghini": {
+    "Huracán":       { "base_msrp": 208571, "category": "sports" },
+    "Aventador":     { "base_msrp": 417826, "category": "sports" },
+    "Urus":          { "base_msrp": 225000, "category": "suv" },
+    "Revuelto":      { "base_msrp": 608358, "category": "sports" }
+  },
+
+  "Bugatti": {
+    "Chiron":        { "base_msrp": 3000000, "category": "sports" },
+    "Divo":          { "base_msrp": 5800000, "category": "sports" },
+    "Veyron":        { "base_msrp": 1700000, "category": "sports" },
+    "Centodieci":    { "base_msrp": 9000000, "category": "sports" },
+    "Bolide":        { "base_msrp": 4700000, "category": "sports" },
+    "Mistral":       { "base_msrp": 5000000, "category": "sports" }
+  },
+
+  "McLaren": {
+    "720S":          { "base_msrp": 299000, "category": "sports" },
+    "765LT":         { "base_msrp": 382500, "category": "sports" },
+    "Artura":        { "base_msrp": 237500, "category": "sports" },
+    "GT":            { "base_msrp": 210000, "category": "sports" }
+  },
+
   "_defaults": {
     "sedan":  { "base_msrp": 30000 },
     "suv":    { "base_msrp": 38000 },

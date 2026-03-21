@@ -279,6 +279,15 @@ app.get('/api/models', async (req, res) => {
     const data = await fetchJSON(url);
 
     if (!data.data || data.data.length === 0) {
+      const localMakeData = priceData[make];
+      if (localMakeData) {
+        const localModels = Object.keys(localMakeData)
+          .filter(name => !name.startsWith('_'))
+          .map((name, index) => ({ id: `local-${index + 1}`, name, make }));
+
+        return res.json({ success: true, count: localModels.length, models: localModels, source: 'fallback' });
+      }
+
       return res.status(404).json({
         success: false,
         error: `No models found for "${make}"${year ? ` in ${year}` : ''}.`
@@ -292,6 +301,17 @@ app.get('/api/models', async (req, res) => {
     res.json({ success: true, count: unique.length, models: unique });
   } catch (error) {
     console.error('[/api/models] Error:', error.message);
+
+    const { make } = req.query;
+    const localMakeData = make ? priceData[make] : null;
+    if (localMakeData) {
+      const localModels = Object.keys(localMakeData)
+        .filter(name => !name.startsWith('_'))
+        .map((name, index) => ({ id: `local-${index + 1}`, name, make }));
+
+      return res.json({ success: true, count: localModels.length, models: localModels, source: 'fallback' });
+    }
+
     res.status(500).json({
       success: false,
       error: 'Failed to fetch models. CarAPI may be temporarily unavailable.'

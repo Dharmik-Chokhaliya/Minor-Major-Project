@@ -223,6 +223,32 @@ const KNOWN_SPECS = {
 
 const CORS_PROXY = 'https://corsproxy.io/?';
 
+async function fetchLocalJSON(url, timeoutMs = 10000) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const response = await fetch(url, {
+      signal: controller.signal,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (!response.ok) {
+      const text = await response.text().catch(() => '');
+      throw new Error(`Server returned ${response.status}: ${text}`);
+    }
+
+    return await response.json();
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+function getLocalModelsForMake(make) {
+  if (!make || !PRICE_DATA[make]) return [];
+  return Object.keys(PRICE_DATA[make]).filter(key => !key.startsWith('_'));
+}
+
 async function fetchJSON(url, timeoutMs = 15000) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
@@ -323,9 +349,9 @@ async function initCarSearch() {
   if (!makeSelect || !form) return;
 
   try {
-    const data = await fetchJSON(`${CAR_API_BASE}/makes/v2?limit=100`);
-    if (data.data && data.data.length > 0) {
-      data.data.forEach(make => {
+    const data = await fetchLocalJSON('/api/makes');
+    if (data.success && Array.isArray(data.makes) && data.makes.length > 0) {
+      data.makes.forEach(make => {
         const opt = document.createElement('option');
         opt.value = make.name;
         opt.textContent = make.name;
@@ -344,9 +370,9 @@ async function initCarSearch() {
   }
 
   try {
-    const data = await fetchJSON(`${CAR_API_BASE}/years`);
-    if (Array.isArray(data)) {
-      data.forEach(year => {
+    const data = await fetchLocalJSON('/api/years');
+    if (data.success && Array.isArray(data.years)) {
+      data.years.forEach(year => {
         const opt = document.createElement('option');
         opt.value = year;
         opt.textContent = year;
@@ -380,14 +406,14 @@ async function initCarSearch() {
     modelSelect.innerHTML = '<option value="">Loading models...</option>';
 
     try {
-      let url = `${CAR_API_BASE}/models/v2?limit=100&make=${encodeURIComponent(make)}`;
+      let url = `/api/models?make=${encodeURIComponent(make)}`;
       if (year) url += `&year=${year}`;
 
-      const data = await fetchJSON(url);
+      const data = await fetchLocalJSON(url);
 
       modelSelect.innerHTML = '<option value="">Select Model</option>';
-      if (data.data && data.data.length > 0) {
-        const unique = [...new Map(data.data.map(m => [m.name, m])).values()];
+      if (data.success && Array.isArray(data.models) && data.models.length > 0) {
+        const unique = [...new Map(data.models.map(m => [m.name, m])).values()];
         unique.forEach(m => {
           const opt = document.createElement('option');
           opt.value = m.name;
@@ -398,7 +424,18 @@ async function initCarSearch() {
         modelSelect.innerHTML = '<option value="">No models found</option>';
       }
     } catch (e) {
-      modelSelect.innerHTML = '<option value="">Error loading models</option>';
+      const localModels = getLocalModelsForMake(make);
+      if (localModels.length > 0) {
+        modelSelect.innerHTML = '<option value="">Select Model</option>';
+        localModels.forEach(name => {
+          const opt = document.createElement('option');
+          opt.value = name;
+          opt.textContent = name;
+          modelSelect.appendChild(opt);
+        });
+      } else {
+        modelSelect.innerHTML = '<option value="">Error loading models</option>';
+      }
     }
   });
 

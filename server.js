@@ -25,7 +25,12 @@ const priceData = JSON.parse(
 );
 
 // ---- 3. MIDDLEWARE ----
-app.use(cors());                                     // Allow cross-origin requests
+// Configure CORS to allow GitHub Pages and Railway
+app.use(cors({
+  origin: ['https://dharmik-chokhaliya.github.io', 'https://auto-mart-production.up.railway.app', 'http://localhost:3000', 'http://localhost:8080'],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true
+}));
 app.use(express.json());                             // Parse JSON request bodies
 app.use(express.static(path.join(__dirname)));       // Serve frontend files
 

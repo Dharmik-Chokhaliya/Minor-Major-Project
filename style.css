@@ -1451,9 +1451,111 @@ html.light-mode .search-field select {
   color: rgba(255, 78, 38, 0.6);
 }
 
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablets (768px and below) */
 @media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 15px;
+    height: 70px;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  .logo {
+    font-size: 24px;
+    gap: 8px;
+  }
+
+  .logo-icon {
+    font-size: 28px;
+  }
+
+  .nav-menu {
+    gap: 20px;
+    font-size: 0.85rem;
+  }
+
+  .cta-button {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-stats {
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    min-width: 100px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .section-header p {
+    font-size: 0.95rem;
+  }
+
+  .showcase-grid,
+  .inventory-grid,
+  .features-grid,
+  .about-content,
+  .contact-grid,
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-card,
+  .inventory-card,
+  .feature-card {
+    padding: 20px;
+  }
+
+  .compare-card {
+    padding: 20px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .search-row {
     grid-template-columns: 1fr;
+  }
+
+  .search-field input,
+  .search-field select {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .spec-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spec-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .trims-grid {
@@ -1461,61 +1563,292 @@ html.light-mode .search-field select {
   }
 
   .car-search-form {
-    padding: 24px;
-  }
-
-  .spec-grid {
-    grid-template-columns: 1fr;
+    padding: 18px;
+    border-radius: 12px;
   }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Mobile Phones (480px and below) */
+@media (max-width: 480px) {
+  :root {
+    font-size: 14px;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
   .navbar-container {
-    padding: 0 20px;
+    padding: 0 12px;
+    height: 65px;
   }
 
   .container {
-    padding: 0 20px;
+    padding: 0 12px;
+  }
+
+  .logo {
+    font-size: 20px;
+    gap: 6px;
+  }
+
+  .logo-icon {
+    font-size: 24px;
   }
 
   .nav-menu {
-    gap: 25px;
-    font-size: 0.9rem;
+    gap: 12px;
+    font-size: 0.75rem;
+  }
+
+  .nav-link {
+    padding: 6px 10px !important;
+  }
+
+  .cta-button {
+    padding: 8px 14px;
+    font-size: 0.75rem;
+  }
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  /* Hero Section */
+  .hero {
+    min-height: 60vh;
+    padding-top: 70px;
+  }
+
+  .hero-content {
+    padding: 20px;
+  }
+
+  .hero-word {
+    display: block;
   }
 
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    line-height: 1.2;
   }
 
-  .hero-buttons {
-    flex-direction: column;
+  .hero-subtitle {
+    font-size: 0.9rem;
   }
 
   .hero-stats {
     flex-direction: column;
-    gap: 30px;
+    gap: 15px;
+  }
+
+  .stat-item {
+    min-width: auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  /* Section Headers */
+  .section-header {
+    padding: 30px 0;
   }
 
   .section-header h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
-  .about-content,
-  .contact-grid {
-    grid-template-columns: 1fr;
+  .section-header p {
+    font-size: 0.85rem;
   }
 
+  /* Cards */
   .showcase-grid,
-  .inventory-grid {
-    grid-template-columns: 1fr;
+  .inventory-grid,
+  .features-grid,
+  .about-content,
+  .contact-grid,
+  .compare-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
   }
 
-  .features-grid {
-    grid-template-columns: 1fr;
+  .showcase-card,
+  .inventory-card,
+  .feature-card,
+  .compare-card {
+    padding: 15px;
+    border-radius: 10px;
   }
 
+  .showcase-badge {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+
+  .price-badge {
+    font-size: 1.1rem;
+    padding: 8px 12px;
+  }
+
+  /* Search Form */
+  .car-search-form {
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .search-row {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .search-field {
+    margin-bottom: 8px;
+  }
+
+  .search-field label {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+  }
+
+  .search-field input,
+  .search-field select {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  /* Specs Grid */
+  .spec-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .spec-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .spec-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .spec-value {
+    font-size: 0.85rem;
+  }
+
+  /* Compare Section */
+  .compare-selectors {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .compare-card {
+    width: 100%;
+  }
+
+  .compare-field {
+    margin-bottom: 12px;
+  }
+
+  .compare-field label {
+    font-size: 0.8rem;
+  }
+
+  .compare-field select,
+  .compare-field input {
+    font-size: 0.85rem;
+    padding: 8px 10px;
+  }
+
+  /* Footer */
   .footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .footer-section h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .footer-section ul li {
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+  }
+
+  .footer-bottom {
+    padding: 15px 0;
+    font-size: 0.8rem;
+  }
+
+  /* Buttons */
+  button {
+    padding: 8px 12px !important;
+    font-size: 0.85rem !important;
+    border-radius: 6px !important;
+  }
+
+  .view-btn,
+  .search-btn {
+    padding: 8px 16px !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Text Sizing */
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.1rem; }
+  p { font-size: 0.9rem; }
+
+  /* Scroll Indicator */
+  .scroll-indicator {
+    bottom: 15px;
+  }
+
+  .wheel {
+    width: 18px;
+    height: 24px;
+  }
+}
+
+/* Extra Small Devices (under 360px) */
+@media (max-width: 360px) {
+  :root {
+    font-size: 12px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .nav-menu {
+    gap: 8px;
+    font-size: 0.7rem;
+  }
+
+  .stat-number {
+    font-size: 1.2rem;
   }
 }

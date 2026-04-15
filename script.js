@@ -331,9 +331,6 @@ function estimatePrice(make, model, year, apiMsrp, category) {
   };
 }
 
-// Railway deployment URL
-const BACKEND_API_BASE = 'https://auto-mart-production.up.railway.app';
-
 const POPULAR_MAKES = [
   'Acura','Alfa Romeo','Aston Martin','Audi','Bentley','BMW','Buick',
   'Cadillac','Chevrolet','Chrysler','Dodge','Ferrari','Fiat','Ford',
@@ -352,7 +349,7 @@ async function initCarSearch() {
   if (!makeSelect || !form) return;
 
   try {
-    const data = await fetchLocalJSON(`${BACKEND_API_BASE}/api/makes`);
+    const data = await fetchLocalJSON('/api/makes');
     if (data.success && Array.isArray(data.makes) && data.makes.length > 0) {
       data.makes.forEach(make => {
         const opt = document.createElement('option');
@@ -373,7 +370,7 @@ async function initCarSearch() {
   }
 
   try {
-    const data = await fetchLocalJSON(`${BACKEND_API_BASE}/api/years`);
+    const data = await fetchLocalJSON('/api/years');
     if (data.success && Array.isArray(data.years)) {
       data.years.forEach(year => {
         const opt = document.createElement('option');
@@ -409,7 +406,7 @@ async function initCarSearch() {
     modelSelect.innerHTML = '<option value="">Loading models...</option>';
 
     try {
-      let url = `${BACKEND_API_BASE}/api/models?make=${encodeURIComponent(make)}`;
+      let url = `/api/models?make=${encodeURIComponent(make)}`;
       if (year) url += `&year=${year}`;
 
       const data = await fetchLocalJSON(url);

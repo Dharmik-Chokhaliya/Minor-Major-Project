@@ -15,6 +15,9 @@ const POPULAR_MAKES = [
   'Rolls-Royce','Subaru','Tesla','Toyota','Volkswagen','Volvo'
 ];
 
+// Railway deployment URL
+const BACKEND_API_BASE = 'https://auto-mart-production.up.railway.app';
+
 const CAR_API_BASE = 'https://carapi.app/api';
 const CORS_PROXY = 'https://corsproxy.io/?';
 
@@ -307,7 +310,7 @@ async function populateMakes() {
   let makes = [];
 
   try {
-    const data = await fetchLocalJSON('/api/makes');
+    const data = await fetchLocalJSON(`${BACKEND_API_BASE}/api/makes`);
     if (data.success && Array.isArray(data.makes) && data.makes.length > 0) {
       makes = data.makes.map(m => m.name);
     }
@@ -346,7 +349,7 @@ async function populateYears() {
   let years = [];
 
   try {
-    const data = await fetchLocalJSON('/api/years');
+    const data = await fetchLocalJSON(`${BACKEND_API_BASE}/api/years`);
     if (data.success && Array.isArray(data.years) && data.years.length > 0) {
       years = data.years;
     }
@@ -395,7 +398,7 @@ function attachSlotEvents(slotIndex) {
     setStatus(slotIndex, 'Loading models...');
 
     try {
-      const response = await fetchLocalJSON(`/api/models?make=${encodeURIComponent(makeSelect.value)}`);
+      const response = await fetchLocalJSON(`${BACKEND_API_BASE}/api/models?make=${encodeURIComponent(makeSelect.value)}`);
       const models = response.success && Array.isArray(response.models)
         ? [...new Set(response.models.map(m => m.name))]
         : [];
@@ -488,7 +491,7 @@ async function fetchVehicleForSlot(slotIndex) {
   setStatus(slotIndex, 'Fetching from database...');
 
   try {
-    const data = await fetchLocalJSON(`/api/car?make=${encodeURIComponent(make)}&model=${encodeURIComponent(model)}${yearParam}`);
+    const data = await fetchLocalJSON(`${BACKEND_API_BASE}/api/car?make=${encodeURIComponent(make)}&model=${encodeURIComponent(model)}${yearParam}`);
     const normalizedVehicle = normalizeVehicleFromApiResponse(data);
     if (!normalizedVehicle) throw new Error('Database returned incomplete data');
     slot.vehicle = normalizedVehicle;
